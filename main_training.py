@@ -39,8 +39,8 @@ def main():
         type=str,
         nargs='+', # Allows multiple model choices, e.g., --model mlp xgb
         default=['all'], # Default to 'all' if no model is specified
-        choices=['all', 'mlp', 'xgboost', 'catboost', 'cnn_cam1', 'cnn_cam2'],
-        help="Specify which model(s) to train and evaluate. Choose from 'mlp', 'xgboost', 'catboost', 'cnn_cam1', 'cnn_cam2', or 'all' for all models."
+        choices=['all', 'mlp', 'xgboost', 'catboost', 'cnn_cam1', 'cnn_cam2', 'cnn_concat', 'cnn_csv_img_concat', 'random_forest', 'svm', 'knn'],
+        help="Specify which model(s) to train and evaluate. Choose from 'mlp', 'xgboost', 'catboost', 'cnn_cam1', 'cnn_cam2', 'cnn_concat', 'cnn_csv_img_concat', 'random_forest', 'svm', 'knn', or 'all' for all models."
     )
 
     # Parse arguments
@@ -149,7 +149,6 @@ def main():
     if 'all' in models_to_run or 'knn' in models_to_run:
         train_and_evaluate_knn(
             X_train_csv_scaled, y_train_csv_raw,
-            X_val_csv_scaled, y_val_csv_raw,
             X_test_csv_scaled, y_test_csv_raw
         )
     # --- End of Model Training and Evaluation ---
