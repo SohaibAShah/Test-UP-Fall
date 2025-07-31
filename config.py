@@ -50,6 +50,12 @@ XGB_MODEL_PATH = os.path.join(SAVED_MODELS_DIR, 'XGB_model.sav')
 CATBOOST_MODEL_PATH = os.path.join(SAVED_MODELS_DIR, 'Catboost_model.sav')
 CNN_IMG1_MODEL_PATH = os.path.join(SAVED_MODELS_DIR, 'CNN_img1.keras')
 CNN_IMG2_MODEL_PATH = os.path.join(SAVED_MODELS_DIR, 'CNN_img2.keras')
+CNN_CONCAT_MODEL_PATH = os.path.join(SAVED_MODELS_DIR, 'model_img12.keras')
+CNN_CSV_IMG_CONCAT_MODEL_PATH = os.path.join(SAVED_MODELS_DIR, 'model_concatenate_all.keras')
+RF_MODEL_PATH = os.path.join(SAVED_MODELS_DIR, 'RandomForest_model.sav')
+SVM_MODEL_PATH = os.path.join(SAVED_MODELS_DIR, 'SVM_model.sav')
+KNN_MODEL_PATH = os.path.join(SAVED_MODELS_DIR, 'KNN_model.sav')
+
 
 # --- Class Names (from your notebook) ---
 CLASS_NAMES = [

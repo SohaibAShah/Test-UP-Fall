@@ -73,7 +73,7 @@ def train_and_evaluate_mlp(X_train, Y_train, X_val, Y_val, X_test, Y_test, y_tes
 
     history_mlp = model_mlp.fit(
         X_train, Y_train,
-        epochs=150,
+        epochs=10,
         batch_size=2**10,
         validation_data=(X_val, Y_val),
         callbacks=[f1_callback_mlp]
