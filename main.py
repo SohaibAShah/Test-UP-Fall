@@ -101,13 +101,14 @@ def main():
     # Verify synchronization
     if (name_1d == name_2d).all(): #cite: 1
         print("Image names for Camera 1 and Camera 2 are synchronized.") #cite: 1
+        print(f"Number of synchronized images: {len(name_1d)}") #cite: 1
     else:
         print("Warning: Image names for Camera 1 and Camera 2 are NOT fully synchronized after deletion.")
 
     # --- Load Labels based on synchronized names ---
     print("\nLoading labels for synchronized images...")
-    label_1 = data_loader.Time_Label.loc[name_1d].values #cite: 1
-    label_2 = data_loader.Time_Label.loc[name_2d].values #cite: 1
+    label_1 = Time_Label.loc[name_1d].values #cite: 1
+    label_2 = Time_Label.loc[name_2d].values #cite: 1
 
     print(f"Length of synchronized img_1: {len(img_1d)}") #cite: 1
     print(f"Length of synchronized name_1: {len(name_1d)}") #cite: 1

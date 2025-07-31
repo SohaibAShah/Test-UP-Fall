@@ -115,12 +115,12 @@ def load_img(start_sub, end_sub, start_act, end_act, start_cam, end_cam, Desired
                                 if filepath == 'CAMERA_TEMP/Subject6Activity10Trial2Camera2/2018-07-06T12_03_04.483526.png': #cite: 1
                                     print('----------------------------NO SHAPE---------------------------------') #cite: 1
                                     continue #cite: 1
-                                elif len(filepath) > 70 and 'Subject4Activity1Trial1Camera2/Subject4Activity1Trial1Camera2Synced' in filepath: #cite: 1
-                                    # This specific hardcoded path check was observed in the output
-                                    # and combined with the length check for 'Invalid image' in the original.
-                                    # Adjust logic if this needs to be more general.
-                                    print(' {} : Invalid image'.format(filepath)) #cite: 1
-                                    continue #cite: 1
+                                if filepath == 'CAMERA/Subject6Activity10Trial2Camera2/2018-07-06T12_03_04.483526.png' :
+                                    print('----------------------------NO SHAPE---------------------------------')
+                                    continue
+                                elif len(filepath) > 70 :
+                                    print(' {} : Invalid image'.format(filepath))
+                                    continue  #cite: 1
                                 
                                 # General filepath length check from original, if not specific problematic path
                                 elif len(filepath) > 70 :

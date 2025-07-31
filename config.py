@@ -1,5 +1,5 @@
 # config.py
-
+import os
 # --- Dataset Paths ---
 # Base directory for the UP-Fall Dataset
 # Assumes 'UP-Fall Dataset' is in the same directory as your Python scripts
@@ -15,9 +15,9 @@ DEFAULT_IMAGE_HEIGHT = 32
 
 # --- Subject, Activity, Camera Ranges ---
 START_SUBJECT = 1
-END_SUBJECT = 17
+END_SUBJECT = 1
 START_ACTIVITY = 1
-END_ACTIVITY = 11
+END_ACTIVITY = 1
 START_CAMERA = 1
 END_CAMERA = 2 # Changed to include both camera 1 and 2 in a single run if desired
 
@@ -27,19 +27,42 @@ NAME_FILE_PREFIX = 'name_'
 LABEL_FILE_PREFIX = 'label_'
 NPY_EXTENSION = '.npy'
 
-# --- Specific Exclusions/Problematic Files ---
-# Define problematic trials/cameras to skip during loading
-# Format: (subject_id, activity_id, trial_id, camera_id)
-# Based on the original notebook's explicit skips
-# (sub_ == 8 and act_ == 11) and ( trial_ == 2 or trial_ == 3) for Camera1
-# (sub_ == 6 and act_ == 10) and ( trial_ == 2 ) for Camera2
-# The current load_img handles Camera1 specific exclusions.
-# For Camera2, the original code had a specific skip for Subject6Activity10Trial2Camera2,
-# but it was within the same 'if' block as the length check, so a more robust check might be needed.
-# For now, we'll rely on the load_img's internal checks.
 
-# Note on 'Invalid image' and 'NO SHAPE' issues:
-# The original notebook includes print statements like 'Invalid image' and 'NO SHAPE'
-# based on `len(filepath) > 70` and `filepath == 'CAMERA/Subject6Activity10Trial2Camera2/2018-07-06T12_03_04.483526.png'`.
-# These specific hardcoded paths and length checks are kept within load_img for direct translation.
-# In a real-world scenario, you might want more dynamic or robust error handling for image loading.
+# --- General Configuration ---
+RANDOM_SEED = 42
+NUM_CLASSES = 12 # Total number of classes in your dataset
+
+# --- Dataset Paths (Assuming 'UP-Fall Dataset' is in the same directory) ---
+DATASET_DIR = 'UP-Fall Dataset'
+SENSOR_CSV_PATH = os.path.join(DATASET_DIR, 'Imp_sensor.csv')
+IMAGE_CAM1_NPY = os.path.join(DATASET_DIR, 'image_1.npy')
+LABEL_CAM1_NPY = os.path.join(DATASET_DIR, 'label_1.npy')
+NAME_CAM1_NPY = os.path.join(DATASET_DIR, 'name_1.npy') # Assuming name files are also saved
+
+IMAGE_CAM2_NPY = os.path.join(DATASET_DIR, 'image_2.npy')
+LABEL_CAM2_NPY = os.path.join(DATASET_DIR, 'label_2.npy')
+NAME_CAM2_NPY = os.path.join(DATASET_DIR, 'name_2.npy') # Assuming name files are also saved
+
+# --- Model Saving Paths ---
+SAVED_MODELS_DIR = 'Saved Model/Experiments'
+MLP_MODEL_PATH = os.path.join(SAVED_MODELS_DIR, 'MLP_csv.keras')
+XGB_MODEL_PATH = os.path.join(SAVED_MODELS_DIR, 'XGB_model.sav')
+CATBOOST_MODEL_PATH = os.path.join(SAVED_MODELS_DIR, 'Catboost_model.sav')
+CNN_IMG1_MODEL_PATH = os.path.join(SAVED_MODELS_DIR, 'CNN_img1.keras')
+CNN_IMG2_MODEL_PATH = os.path.join(SAVED_MODELS_DIR, 'CNN_img2.keras')
+
+# --- Class Names (from your notebook) ---
+CLASS_NAMES = [
+    '?????',
+    'Falling hands',
+    'Falling knees',
+    'Falling backwards',
+    'Falling sideward',
+    'Falling chair',
+    'Walking',
+    'Standing',
+    'Sitting',
+    'Picking object',
+    'Jumping',
+    'Laying'
+]
